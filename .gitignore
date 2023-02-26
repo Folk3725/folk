@@ -1,25 +1,12 @@
-# CakePHP 3
+<?php
+use M4h45amu7x\Voucher;
 
-/vendor/*
-/config/app.php
+require('src/Voucher.php');
 
-/tmp/cache/models/*
-!/tmp/cache/models/empty
-/tmp/cache/persistent/*
-!/tmp/cache/persistent/empty
-/tmp/cache/views/*
-!/tmp/cache/views/empty
-/tmp/sessions/*
-!/tmp/sessions/empty
-/tmp/tests/*
-!/tmp/tests/empty
+$voucher = new Voucher('0123456789', 'https://gift.truemoney.com/campaign/?v=yGIDVpsqsbFV1LQSMH');
 
-/logs/*
-!/logs/empty
-
-# CakePHP 2
-
-/app/tmp/*
-/app/Config/core.php
-/app/Config/database.php
-/vendors/*
+if ($_GET['action'] == 'verify')
+    die($voucher->verify());
+else if ($_GET['action'] == 'redeem')
+    die($voucher->redeem());
+  
